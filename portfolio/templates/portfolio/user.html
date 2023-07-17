@@ -1,0 +1,17 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock%}
+
+{% block main %}
+    <section class="jumbotron blog__container bd-container">
+        <div class="">
+            <h1>Bem Vindo : {{ request.user.username }}</h1>
+            <ul>
+                <li>Username: {{ request.user.username }}</li>
+            </ul>
+            <a href="{% url 'portfolio:logout' %}">Logout</a>
+        </div>
+    </section>
+{% endblock %}

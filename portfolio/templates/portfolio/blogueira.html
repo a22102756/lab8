@@ -1,0 +1,37 @@
+{% extends 'portfolio/layoutDjando.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock%}
+
+{% block main %}
+    <section class="jumbotron blog__container bd-container" >
+        <div class="">
+            <h1>Tarefas</h1>
+            <p>Aplicacção para gerir as suas tarefas</p>
+
+            {% for tarefa in tarefas %}
+                <p>
+                <span class="info">
+                    {% if tarefa.prioridade == 1 %}
+                        🟢
+                    {% elif tarefa.prioridade == 2 %}
+                        🟡
+                    {% else %}
+                        🔴
+                    {% endif %}
+                </span>
+                    {% if tarefa.concluido == True %}
+                        <del>{{ tarefa.titulo }}</del>
+                    {% else %}
+                        {{ tarefa.titulo }}
+                    {% endif %}
+
+                <a href="{% url 'portfolio:edita' tarefa.id %}" class="btn btn-warning  btn-sm" style="float: right; margin-right: 10px">Editar</a>
+                </p>
+            {% endfor %}
+            <a href="{% url 'portfolio:nova' %}" class="btn btn-sucess">Nova</a>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock%}
+
+{% block main %}
+    <section class="portfolio section bd-container">
+        <span class="section-subtitle">My recent portfolio</span>
+        <h2 class="section__title">Portfolio</h2>
+        <div class="portfolio__nav">
+            <span class="portfolio__item active-portfolio" data-filter="all">All</span>
+            <span class="portfolio__item active-portfolio" data-filter=".front">Front-End</span>
+            <span class="portfolio__item active-portfolio" data-filter=".back">Back-End</span>
+            <span class="portfolio__item active-portfolio" data-filter=".projects">Projetos</span>
+        </div>
+        <div class="portfolio__container bd-container">
+            <!--CASE 1-->
+            <div class="portfolio__content mix front">
+                <a href="#"><img src="{% static 'portfolio/images/back-end.jpg' %}" class="portfolio__img"></a>
+                <div class="portfolio__data">
+                    <span class="portfolio__subtitle">Back-end</span>
+                    <a href="#"><h2>This Portfolio</h2></a>
+                    <a href="#" class="button button-link">View Details</a>
+                    <p class="portfolio__hover-text">This is a back-end portfolio example</p>
+                </div>
+            </div>
+            <!--CASE 2-->
+            <div class="portfolio__content mix front ">
+                <a href="#"><img src="{% static 'portfolio/images/front-end.jpg' %}" class="portfolio__img"></a>
+                <div class="portfolio__data">
+                    <span class="portfolio__subtitle">Front-end</span>
+                    <a href="#"><h2>This Portfolio</h2></a>
+                    <a href="#" class="button button-link">View Details</a>
+                    <p class="portfolio__hover-text">This is a front-end portfolio example</p>
+                </div>
+            </div>
+            <!--CASE 3-->
+            <div class="portfolio__content mix back">
+                <a href="#"><img src="{% static 'portfolio/images/school_projects.jpg' %}" class="portfolio__img"></a>
+                <div class="portfolio__data">
+                    <span class="portfolio__subtitle">Web development</span>
+                    <a href="#"><h2>This Portfolio</h2></a>
+                    <a href="#" class="button button-link">View Details</a>
+                    <p class="portfolio__hover-text">This is a web development portfolio example</p>
+                </div>
+            </div>
+            <!--CASE 4-->
+            <div class="portfolio__content mix back">
+                <a href="#"><img src="{% static 'portfolio/images/back-end.jpg' %}" class="portfolio__img"></a>
+                <div class="portfolio__data">
+                    <span class="portfolio__subtitle">Web development</span>
+                    <a href="#"><h2>This Portfolio</h2></a>
+                    <a href="#" class="button button-link">View Details</a>
+                    <p class="portfolio__hover-text">This is a web development portfolio example</p>
+                </div>
+            </div>
+            <!--CASE 5-->
+            <div class="portfolio__content mix projects">
+                <a href="#"><img src="{% static 'portfolio/images/projects_dev.jpg' %}" class="portfolio__img"></a>
+                <div class="portfolio__data">
+                    <span class="portfolio__subtitle">Web development</span>
+                    <a href="#"><h2>This Portfolio</h2></a>
+                    <a href="#" class="button button-link">View Details</a>
+                    <p class="portfolio__hover-text">This is a web development portfolio example</p>
+                </div>
+            </div>
+            <!--CASE 6-->
+            <div class="portfolio__content mix projects">
+                <a href="#"><img src="{% static 'portfolio/images/school_projects.jpg' %}" class="portfolio__img"></a>
+                <div class="portfolio__data">
+                    <span class="portfolio__subtitle">Web development</span>
+                    <a href="#"><h2>This Portfolio</h2></a>
+                    <a href="#" class="button button-link">View Details</a>
+                    <p class="portfolio__hover-text">This is a web development portfolio example</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+
+<script>
+    const mixer = mixitup('.portfolio__container', {
+    selectors: {
+        target: '.portfolio__content'
+    },
+    animation: {
+        duration: 400
+    }
+});
+
+const linkPortfolio = document.querySelectorAll('.portfolio__item')
+
+function activePortfolio() {
+    if (linkPortfolio) {
+        linkPortfolio.forEach((l) => l.classList.remove('active-portfolio'))
+        this.classList.add('active-portfolio')
+    }
+}
+
+linkPortfolio.forEach((l) => l.addEventListener('click', activePortfolio))
+</script>

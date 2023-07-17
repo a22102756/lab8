@@ -1,0 +1,50 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock%}
+
+{% block main %}
+    <section class="services services-section bd-container" id="services">
+        <h2 class="services-title">Unidades Curriculares</h2>
+
+        <div class="services__container grid">
+            {% for i in disciplina %}
+                {% if i.ano == 1 %}
+                <div class="services__data">
+                    <h3 class="services__title">{{ i.nome }}</h3>
+                    <p><b>ECTS: </b>{{ i.ECTS }}</p>
+                    <p><b>Ano: </b>{{ i.ano }}</p>
+                    <p><b>Ano letivo: </b>{{ i.ano_letivo }}</p>
+                    <p><b>Tópicos: </b>{{ i.topicos_abordados }}</p>
+                    <p><b>Docentes: </b>{{ i.professores }}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+            {% for i in disciplina %}
+               {% if i.ano == 2 %}
+                <div class="services__data">
+                    <h3 class="services__title">{{ i.nome }}</h3>
+                    <p><b>ECTS: </b>{{ i.ECTS }}</p>
+                    <p><b>Ano: </b>{{ i.ano }}</p>
+                    <p><b>Ano letivo: </b>{{ i.ano_letivo }}</p>
+                    <p><b>Tópicos: </b>{{ i.topicos_abordados }}</p>
+                    <p><b>Docentes: </b>{{ i.professores }}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+            {% for i in disciplina %}
+               {% if i.ano == 3 %}
+                <div class="services__data">
+                    <h3 class="services__title">{{ i.nome }}</h3>
+                    <p><b>ECTS: </b>{{ i.ECTS }}</p>
+                    <p><b>Ano: </b>{{ i.ano }}</p>
+                    <p><b>Ano letivo: </b>{{ i.ano_letivo }}</p>
+                    <p><b>Tópicos: </b>{{ i.topicos_abordados }}</p>
+                    <p><b>Docentes: </b>{{ i.professores }}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

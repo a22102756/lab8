@@ -1,0 +1,20 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+
+{% block main %}
+    <section  class="home" id="home">
+        <h1 class="login__title">Realize LogIn!</h1>
+        <div class="comment-box">
+            {% if message %}
+                <div>{{ message }}</div>
+            {% endif %}
+            <form action="{%  url 'portfolio:login'  %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" placeholder="LogIn">
+            </form>
+        </div>
+    </section>
+{% endblock main %}

@@ -1,37 +1,114 @@
-<!DOCTYPE html>
-<html lang="pt">
- {% load static %}
-<head>
+{% load static %}
 
-    <title>Okica's</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <meta name="author" content="Joana Okica">
-    <meta name="description"
-        content="Portfolio de Joana Okica. Licenciada em Línguas para Relações Internacionais e estudande de licenciatura em Engenharia Informática">
-    <meta name="keywords" content="Html, Student projects, Js, Css">
-    <link rel="stylesheet" href="{% static 'portfolio\css\style.css' %}">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="swiper-bundle.min.css">
-</head>
 
 <body>
-  {% block main %}
-    <div class="preloader">
-        <h1 style="font-size: 150px; letter-spacing: 10px;">OKICA</h1>
-        <div class="loading-text" style="z-index: 1;">
-            <span>Live</span>
-            <span style="color: #5A4331">Love</span>
-            <span>Learn</span>
-            <span style="color: #5A4331">Code</span>
-            <span>Repeat</span>
-        </div>
-    </div>
+    <!--ScrollTop-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+    <header class="header" id="header">
+        <title>Okica's</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+        <meta name="author" content="Joana Okica">
+        <meta name="description" content="Portfolio de Joana Okica. Licenciada em Línguas para Relações Internacionais e estudande de licenciatura em Engenharia Informática">
+        <meta name="keywords" content="Html, Student projects, Js, Css">
+        <link rel="stylesheet" href="{% static 'portfolio\css\style.css' %}">
+        <link rel="stylesheet" href="{% static 'portfolio\css\swiper-bundle.min.css' %}">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
 
-    {% endblock %}
+
+        <nav class="nav container">
+            <a href="{% url 'portfolio:index' %}" class="nav__logo">Okica's</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list" id="nav-list">
+                    <li>
+                       <a href= "{% url 'portfolio:home' %}" class="nav__link">About Me</a>
+                    </li>
+                    <li>
+                        <a href= "{% url 'portfolio:activities' %}" class="nav__link">Activities</a>
+                    </li>
+                    <li class="dd__item">
+                        <div class="nav__link">
+                            About this Website
+                            <i  class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        </div>
+                        <ul class="dd__menu">
+                            <li class="dd__subitem">
+                                <a href= "{% url 'portfolio:web' %}" class="dd__link">
+                                    <i class="ri-pie-chart-line"></i>Tecnologias
+                                </a>
+                            </li>
+                            <li class="dd__subitem">
+                                <a href="{% url 'portfolio:web' %}" class="dd__link">
+                                     <i class="ri-pie-chart-line"></i>Website
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dd__item">
+                        <div class="nav__link">
+                            Blog
+                            <i  class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        </div>
+                        <ul class="dd__menu">
+                            <li class="dd__subitem">
+                                <a href="{% url 'portfolio:blogueira' %}" class="dd__link">
+                                    <i class="ri-pie-chart-line"></i>Tarefas
+                                </a>
+                            </li>
+                            <li class="dd__subitem">
+                                <a href="{% url 'portfolio:publication' %}" class="dd__link">
+                                     <i class="ri-pie-chart-line"></i>Publications
+                                </a>
+                            </li>
+                            <li class="dd__subitem">
+                                <a href="{% url 'portfolio:news' %}" class="dd__link">
+                                     <i class="ri-pie-chart-line"></i>News
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href= "{% url 'portfolio:academia' %}" class="nav__link">Academia</a>
+                    </li>
+                    <li>
+                        <a href= "{% url 'portfolio:login' %}" class="nav__link">Login</a>
+                    </li>
+                    <li onclick="myFunction()">
+                        <a href="{% url 'portfolio:escola' %}" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+
+            <div class="nav__btns">
+                <i class="ri-moon-line change-theme" id="theme-button"></i>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block main %} {% endblock %}
+    </main>
+
+    <footer>
+      {% block footer %} {% endblock %}
+    </footer>
+
 </body>
 
 <script>
@@ -45,7 +122,8 @@
     p.classList.add('visible');
 </script>
 
-<script src="swiper-bundle.min.js"></script>
+<script src="{%  static 'portfolio/css/swiper-bundle.min.js' %}"></script>
+
 <!--Sim eu sei que podia fazer tudo num só scrip mas é mais facil se estiver organizado em varios. Pelo menos por agora-->
 <script>
     /*==================== SHOW MENU ====================*/
@@ -133,8 +211,6 @@
     }
 </script>
 
-
-
 <script>
     var swiper = new Swiper(".discover__container", {
         effect: "coverflow",
@@ -154,7 +230,29 @@
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
     }
-</script>
 
+    function scrollTop() {
+        const scrollTop = document.getElementById('scroll-top')
+        if (this.scrollY >= 560) scrollTop.classList.add('show-scroll'); else scrollTop.classList.remove('scroll')
+    }
+    window.addEventListener('scroll',scrollTop)
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script href="{% static 'portfolio/css/mixitup.min.js'%}"></script>
+<script>
+    // Get the input field and the frase element
+    const inputNome = document.getElementById("nome");
+    const fraseElement = document.getElementById("frase");
+
+    // Listen for input event on the input field
+    inputNome.addEventListener("input", function () {
+        // Get the value of the input field
+        const nome = inputNome.value;
+
+        // Update the text in the frase element
+        fraseElement.textContent = nome;
+    });
+</script>
 
 </html>
